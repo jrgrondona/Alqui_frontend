@@ -1,0 +1,15 @@
+.rdt_TableCol {
+  background-color: rgb(90, 88, 88);
+  color: white;
+}
+.rdt_TableCell {
+  background: #ee9ca7;
+  background: -webkit-linear-gradient(to right, #ffdde1, #ee9ca7);
+  background: linear-gradient(to right, #ffdde1, #ee9ca7);
+  color: black;
+}
+body {
+  background: #FFA17F;
+  background: -webkit-linear-gradient(to right, #00223E, #FFA17F);
+  background: linear-gradient(to right, #00223E, #FFA17F);
+}
