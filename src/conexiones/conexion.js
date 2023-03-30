@@ -53,3 +53,24 @@ export async function Login(datos_enviar) {
       console.log('Nuestro error', error);
     }
   }
+  export function SaveInquilino(datos_enviar) {
+    const token = JSON.parse(localStorage.getItem("token"));
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(datos_enviar),
+    };
+    return fetch(`${API_URL}/inquilinos`, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        return data;
+      })
+      .catch(error => {
+        console.log(error);
+        throw error;
+      });
+  }

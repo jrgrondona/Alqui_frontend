@@ -28,7 +28,7 @@ export function Listado() {
     },
     {
       name: "FECHA INICIO",
-      selector: (row) => row.fecha_inicio,
+      selector: (row) => row.fecha,
     },
     {
       name: "FECHA FINALIZACION",
@@ -38,6 +38,7 @@ export function Listado() {
   return (
     <>
       <div className="card-header text-center mt-3"><h3 className="">INQUILINOS</h3></div>
+      
       <div className="card-body">
         <DataTable
           columns={columns}
@@ -51,6 +52,7 @@ export function Listado() {
           pointerOnHover
         />
       </div>
+      <Link name="" id="" className="btn btn-primary" to={'/AgregarInquilino'} role="button">Cargar nuevo Inquilino</Link>
     </>
   );
 }

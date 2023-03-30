@@ -5,7 +5,7 @@ import { Registro } from './componet/login/Registro'
 import { Panel } from './componet/inicio/Panel'
 import { Principal } from './componet/inicio/Principal'
 import { Listado } from './componet/inquilinos/ListaInquilinos'
-
+import { AgregarInquilino } from './componet/inquilinos/CargarInquilino'
 
 function App() {
   const [usuario, setUsuario] = useState('');
@@ -34,6 +34,7 @@ function App() {
          <Routes>
          <Route path='/' element={<Principal/>}></Route>
          <Route path='/inquilinos' element={<Listado/>}></Route>
+         <Route path='/AgregarInquilino' element={<AgregarInquilino/>}></Route>
          </Routes>
      </div>
     }
