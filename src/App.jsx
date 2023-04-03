@@ -6,6 +6,7 @@ import { Panel } from './componet/inicio/Panel'
 import { Principal } from './componet/inicio/Principal'
 import { Listado } from './componet/inquilinos/ListaInquilinos'
 import { AgregarInquilino } from './componet/inquilinos/CargarInquilino'
+import Error404 from './componet/Error404'
 
 function App() {
   const [usuario, setUsuario] = useState('');
@@ -35,6 +36,7 @@ function App() {
          <Route path='/' element={<Principal/>}></Route>
          <Route path='/inquilinos' element={<Listado/>}></Route>
          <Route path='/AgregarInquilino' element={<AgregarInquilino/>}></Route>
+         <Route path="*" element={<Error404/>} />
          </Routes>
      </div>
     }
