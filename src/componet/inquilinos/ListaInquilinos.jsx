@@ -45,7 +45,7 @@ export function Listado() {
     <>
       <div className="card-header text-center mt-3"><h3 className="">INQUILINOS</h3></div>
       <div className="col-2">
-        <Button variant="primary" size="sm" onClick={handleShow}>
+        <Button variant="btn btn-outline-primary" size="sm" onClick={handleShow}>
           Agregar Inquilino
         </Button>
         <AgregarInquilino show={show} handleClose={handleClose} />
