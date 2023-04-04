@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import * as API from "../../conexiones/conexion";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../App.css';
 import 'styled-components'
 import DataTable from "react-data-table-component";
+import { AgregarInquilino } from "./CargarInquilino";
+import Button from 'react-bootstrap/Button';
 
 export function Listado() {
   const [listado, setListado] = useState([]);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     API.getListadoInquilinos().then(setListado)
@@ -38,7 +44,12 @@ export function Listado() {
   return (
     <>
       <div className="card-header text-center mt-3"><h3 className="">INQUILINOS</h3></div>
-      
+      <div className="col-2">
+        <Button variant="primary" size="sm" onClick={handleShow}>
+          Agregar Inquilino
+        </Button>
+        <AgregarInquilino show={show} handleClose={handleClose} />
+      </div>
       <div className="card-body">
         <DataTable
           columns={columns}
@@ -52,7 +63,6 @@ export function Listado() {
           pointerOnHover
         />
       </div>
-      <Link name="" id="" className="btn btn-primary" to={'/AgregarInquilino'} role="button">Cargar nuevo Inquilino</Link>
     </>
   );
 }
