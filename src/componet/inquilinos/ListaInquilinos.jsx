@@ -6,6 +6,7 @@ import 'styled-components'
 import DataTable from "react-data-table-component";
 import { AgregarInquilino } from "./CargarInquilino";
 import Button from 'react-bootstrap/Button';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 export function Listado() {
   const [listado, setListado] = useState([]);
@@ -37,9 +38,13 @@ export function Listado() {
       selector: (row) => row.fecha,
     },
     {
-      name: "FECHA FINALIZACION",
-      selector: (row) => row.fecha_finalizacion,
-    }
+      name: "EDITAR",
+      selector: (row) => <button className="btn btn-sm btn-outline-primary"><FaEdit /></button>,
+    },
+    {
+      name: "ELIMINAR",
+      selector: (row) => <button className="btn btn-sm btn-outline-danger"><FaTrash /></button>,
+    },
   ];
   return (
     <>
