@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+
 export function AgregarInquilino({ show, handleClose }) {
   const nombre_inquilino = useRef();
   const numero_telefono_inquilino = useRef();
