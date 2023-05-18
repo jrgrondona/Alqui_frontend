@@ -7,6 +7,8 @@ import DataTable from "react-data-table-component";
 import { AgregarInquilino } from "./CargarInquilino";
 import Button from 'react-bootstrap/Button';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 export function Listado() {
   const [listado, setListado] = useState([]);
@@ -16,10 +18,51 @@ export function Listado() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [mensajeError, setmensajeError] = useState("");
+  const [mensajeSuccess, setmensajeSuccess] = useState("");
+  const swalboton = Swal.mixin({
+    customClass: {
+      confirmButton: 'btn btn-success',
+      cancelButton: 'btn btn-danger'
+    },
+    buttonsStyling: false
+  })
   useEffect(() => {
     API.getListadoInquilinos().then(setListado)
   }, [])
-
+  const deleteInquilino = async (id_inquilinos) => {
+    confirmAlert({
+      title: 'Estas seguro?',
+      message: 'La informacion no podra ser recuperada!',
+      buttons: [
+        {
+          label: 'Si, Borrar',
+          onClick: async () => {
+            await API.DeleteInquilino(id_inquilinos);
+            setTimeout(() => {
+              setmensajeError("");
+              window.location.reload(true);
+            }, 3000);
+            swalboton.fire(
+              'Borrado!',
+              'venta borrada correctamente.',
+              'success'
+            );
+          }
+        },
+        {
+          label: 'No, Cancelar',
+          onClick: () => {
+            swalboton.fire(
+              'Cancelado',
+              'la venta no se borro',
+              'error'
+            );
+          }
+        }
+      ]
+    });
+  };
   const columns = [
     {
       name: "ID",
@@ -43,7 +86,7 @@ export function Listado() {
     },
     {
       name: "ELIMINAR",
-      selector: (row) => <button className="btn btn-sm btn-outline-danger"><FaTrash /></button>,
+      selector: (row) => <button onClick={() => deleteInquilino(row.id_inquilinos)} className="btn btn-sm btn-outline-danger"><FaTrash /></button>,
     },
   ];
   return (

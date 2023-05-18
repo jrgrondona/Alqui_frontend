@@ -53,6 +53,7 @@ export async function Login(datos_enviar) {
       console.log('Nuestro error', error);
     }
   }
+/// guarda nuevos inquilinos ////  
   export function SaveInquilino(datos_enviar) {
     const token = JSON.parse(localStorage.getItem("token"));
     const requestOptions = {
@@ -74,3 +75,25 @@ export async function Login(datos_enviar) {
         throw error;
       });
   }
+///// ELIMINA LOS REGISTRO DE LA BASE DE DATOS ////
+export async function DeleteInquilino(id_inquilinos) {
+  const token = JSON.parse(localStorage.getItem("token"));
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      `${API_URL}/delete/${id_inquilinos}`,
+      requestOptions
+    );
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (e) {
+    console.log("Error en el servidor");
+  }
+}
