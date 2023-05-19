@@ -33,7 +33,7 @@ export function Listado() {
   const deleteInquilino = async (id_inquilinos) => {
     confirmAlert({
       title: 'Estas seguro?',
-      message: 'La informacion no podra ser recuperada!',
+      message: 'La info no podra ser recuperada!',
       buttons: [
         {
           label: 'Si, Borrar',
@@ -45,7 +45,7 @@ export function Listado() {
             }, 3000);
             swalboton.fire(
               'Borrado!',
-              'venta borrada correctamente.',
+              'LA INFO FUE BORRADA CORRECTAMENTE.',
               'success'
             );
           }
@@ -55,7 +55,7 @@ export function Listado() {
           onClick: () => {
             swalboton.fire(
               'Cancelado',
-              'la venta no se borro',
+              'la info no se borro',
               'error'
             );
           }
@@ -79,6 +79,10 @@ export function Listado() {
     {
       name: "FECHA INICIO",
       selector: (row) => row.fecha,
+    },
+    {
+      name: "FECHA FINALIZACION",
+      selector: (row) => row.fecha_finalizacion,
     },
     {
       name: "EDITAR",
