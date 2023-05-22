@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaFacebook, FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import * as API from '../../conexiones/conexion'
 import '../login/Login.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -83,6 +84,19 @@ export function Login() {
                   </Link>
                 </p>
               </div>
+            </div>
+            <div className="social-icons">
+              <FaFacebook />
+              &nbsp;
+              <FaInstagram />
+              &nbsp;
+              <a href="https://www.linkedin.com/in/juan-grondona-3158aa25a/" target="_blank">
+                <FaLinkedin />
+              </a>
+              &nbsp;
+              <a href="https://github.com/jrgrondona" target="_blank" className="icon-large">
+                <FaGithub />
+              </a>
             </div>
           </form>
         </div>
