@@ -18,8 +18,8 @@ export function Listado() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [mensajeError, setmensajeError] = useState("");
   const [mensajeSuccess, setmensajeSuccess] = useState("");
+  
   const swalboton = Swal.mixin({
     customClass: {
       confirmButton: 'btn btn-success',
@@ -40,7 +40,7 @@ export function Listado() {
           onClick: async () => {
             await API.DeleteInquilino(id_inquilinos);
             setTimeout(() => {
-              setmensajeError("");
+              setmensajeSuccess("");
               window.location.reload(true);
             }, 3000);
             swalboton.fire(
@@ -90,8 +90,15 @@ export function Listado() {
     },
     {
       name: "ELIMINAR",
-      selector: (row) => <button onClick={() => deleteInquilino(row.id_inquilinos)} className="btn btn-sm btn-outline-danger"><FaTrash /></button>,
-    },
+      selector: (row) => (<button
+        onClick={() => deleteInquilino(row.id_inquilinos)}
+        className="btn btn-sm btn-outline-danger"
+      >
+        <FaTrash />
+      </button>
+      ),
+    }
+
   ];
   return (
     <>
